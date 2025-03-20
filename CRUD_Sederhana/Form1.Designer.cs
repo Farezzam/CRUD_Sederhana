@@ -38,10 +38,12 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtTelepon = new System.Windows.Forms.TextBox();
             this.txtAlamat = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonTambah = new System.Windows.Forms.Button();
+            this.buttonHapus = new System.Windows.Forms.Button();
+            this.buttonUbah = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -124,41 +126,49 @@
             this.txtAlamat.Size = new System.Drawing.Size(356, 20);
             this.txtAlamat.TabIndex = 9;
             // 
-            // button1
+            // buttonTambah
             // 
-            this.button1.Location = new System.Drawing.Point(586, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Tambah";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonTambah.Location = new System.Drawing.Point(586, 35);
+            this.buttonTambah.Name = "buttonTambah";
+            this.buttonTambah.Size = new System.Drawing.Size(75, 30);
+            this.buttonTambah.TabIndex = 10;
+            this.buttonTambah.Text = "Tambah";
+            this.buttonTambah.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonHapus
             // 
-            this.button2.Location = new System.Drawing.Point(586, 66);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Hapus";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonHapus.Location = new System.Drawing.Point(586, 71);
+            this.buttonHapus.Name = "buttonHapus";
+            this.buttonHapus.Size = new System.Drawing.Size(75, 30);
+            this.buttonHapus.TabIndex = 11;
+            this.buttonHapus.Text = "Hapus";
+            this.buttonHapus.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonUbah
             // 
-            this.button3.Location = new System.Drawing.Point(586, 98);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Ubah";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonUbah.Location = new System.Drawing.Point(586, 112);
+            this.buttonUbah.Name = "buttonUbah";
+            this.buttonUbah.Size = new System.Drawing.Size(75, 30);
+            this.buttonUbah.TabIndex = 12;
+            this.buttonUbah.Text = "Ubah";
+            this.buttonUbah.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonRefresh
             // 
-            this.button4.Location = new System.Drawing.Point(586, 127);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Refresh";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Location = new System.Drawing.Point(586, 152);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 30);
+            this.buttonRefresh.TabIndex = 13;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(65, 202);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(678, 209);
+            this.dataGridView1.TabIndex = 14;
             // 
             // Form1
             // 
@@ -166,10 +176,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonRefresh);
+            this.Controls.Add(this.buttonUbah);
+            this.Controls.Add(this.buttonHapus);
+            this.Controls.Add(this.buttonTambah);
             this.Controls.Add(this.txtAlamat);
             this.Controls.Add(this.txtTelepon);
             this.Controls.Add(this.txtEmail);
@@ -183,6 +194,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,10 +211,11 @@
         private System.Windows.Forms.TextBox txtTelepon;
         private System.Windows.Forms.TextBox txtAlamat;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonTambah;
+        private System.Windows.Forms.Button buttonHapus;
+        private System.Windows.Forms.Button buttonUbah;
+        private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
