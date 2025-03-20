@@ -13,7 +13,7 @@ namespace CRUD_Sederhana
 {
     public partial class Form1 : Form
     {
-        private string connectionString = "Data Source=Data Source=LAPTOP-JICJ6MBI\\FARISNAUFAL;" + "Initial Catalog=OrganisasiMahasiswa2;Integrated Security=True";
+        private string connectionString = "Data Source=LAPTOP-JICJ6MBI\\FARISNAUFAL;Initial Catalog=OrganisasiMahasiswa2;Integrated Security=True";
 
         public Form1()
         {
@@ -25,7 +25,7 @@ namespace CRUD_Sederhana
             LoadData();
         }
 
-        private void clearForm()
+        private void ClearForm()
         {
             txtNIM.Clear();
             txtNama.Clear();
@@ -43,7 +43,7 @@ namespace CRUD_Sederhana
                 try
                 {
                     conn.Open();
-                    string query = "SELECT NIM AS [NIM], Nama, Email, Telepon, Alamat FROM MAHASISWA";
+                    string query = "SELECT NIM AS [NIM], Nama, Email, Telepon, Alamat FROM Mahasiswa";
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -51,7 +51,7 @@ namespace CRUD_Sederhana
                     dgvMahasiswa.AutoGenerateColumns = true;
                     dgvMahasiswa.DataSource = dt;
 
-                    clearForm();
+                    ClearForm();
                 }
                 catch (Exception ex)
                 {
@@ -60,7 +60,7 @@ namespace CRUD_Sederhana
             }
         }
 
-        private void btnSimpan_Click(object sender, EventArgs e)
+        private void BtnTambah(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -73,21 +73,21 @@ namespace CRUD_Sederhana
                     }
 
                     conn.Open();
-                    string query = "INSERT INTO MAHASISWA (NIM, Nama, Email, Telepon, Alamat) VALUES (@NIM, @Nama, @Email, @Telepon, @Alamat)";
+                    string query = "INSERT INTO Mahasiswa (NIM, Nama, Email, Telepon, Alamat) VALUES (@NIM, @Nama, @Email, @Telepon, @Alamat)";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@NIM", txtNIM.Text);
-                        cmd.Parameters.AddWithValue("@Nama", txtNama.Text);
-                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                        cmd.Parameters.AddWithValue("@Telepon", txtTelepon.Text);
-                        cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text);
+                        cmd.Parameters.AddWithValue("@NIM", txtNIM.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Nama", txtNama.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Telepon", txtTelepon.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Alamat", txtAlamat.Text.Trim());
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Data berhasil ditambahkan", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadData();
-                            clearForm();
+                            ClearForm();
                         }
                         else
                         {
@@ -102,7 +102,52 @@ namespace CRUD_Sederhana
             }
         }
 
+        private void BtnHapus(object sender, EventArgs e)
+        {
+            if (dgvMahasiswa.SelectedRows.Count > 0)
+            {
+                DialogResult confirm = MessageBox.Show("Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirm == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            string nim = dgvMahasiswa.SelectedRows[0].Cells["NIM"].Value.ToString();
+                            conn.Open();
+                            string query = "DELETE FROM Mahasiswa WHERE NIM = @NIM";
 
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@NIM", nim);
+                                int rowsAffected = cmd.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+                                    MessageBox.Show("Data berhasil dihapus", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadData();
+                                    ClearForm();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Data gagal dihapus", "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih data yang akan dihapus", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        
     }
     
 }
