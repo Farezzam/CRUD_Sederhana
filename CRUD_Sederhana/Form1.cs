@@ -60,7 +60,8 @@ namespace CRUD_Sederhana
             }
         }
 
-        private void BtnTambah(object sender, EventArgs e)
+
+        private void BtnTambah_Click(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -102,7 +103,7 @@ namespace CRUD_Sederhana
             }
         }
 
-        private void BtnHapus(object sender, EventArgs e)
+        private void BtnHapus_Click(object sender, EventArgs e)
         {
             if (dgvMahasiswa.SelectedRows.Count > 0)
             {
@@ -147,7 +148,7 @@ namespace CRUD_Sederhana
             }
         }
 
-        private void BtnRefresh(object sender, EventArgs e)
+        private void BtnRefresh_Click(object sender, EventArgs e)
         {
             LoadData();
 
