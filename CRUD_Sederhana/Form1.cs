@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CRUD_Sederhana
 {
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
         private string connectionString = "Data Source=Data Source=LAPTOP-JICJ6MBI\\FARISNAUFAL;" + "Initial Catalog=OrganisasiMahasiswa2;Integrated Security=True";
 
@@ -19,14 +19,21 @@ namespace CRUD_Sederhana
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
 
+        private void clearForm()
+        {
+            txtNIM.Clear();
+            txtNama.Clear();
+            txtEmail.Clear();
+            txtTelepon.Clear();
+            txtAlamat.Clear();
+
+            txtNIM.Focus();
         }
     }
 }
+    
