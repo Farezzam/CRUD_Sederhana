@@ -147,7 +147,15 @@ namespace CRUD_Sederhana
             }
         }
 
-        
+        private void BtnRefresh(object sender, EventArgs e)
+        {
+            LoadData();
+
+            MessageBox.Show($"Jumlah kolom : {dgvMahasiswa.ColumnCount}\nJumlah Baris : {dgvMahasiswa.RowCount}",
+                "Debugging DataGridView", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+       
     }
     
 }
